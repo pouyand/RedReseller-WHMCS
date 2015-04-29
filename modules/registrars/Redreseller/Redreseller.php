@@ -54,12 +54,7 @@
         $domain = $params['sld'] . '.' . $params['tld'];
         $duration = (int)$params['regperiod'] * 12;
         $testmode = $params['TestMode'];
-        
-        // include('..\..\..\configuration.php');
-        
-        // $link = mysql_connect($db_host, $db_username, $db_password);
-        // mysql_select_db($db_name);
-        // mysql_query('SET NAMES \'utf8\'', $link);
+
         $result = mysql_query('select tblclients.email from tbldomains,tblclients where tbldomains.domain=\'' . $domain . '\'');
 
         $row = mysql_fetch_row($result);
