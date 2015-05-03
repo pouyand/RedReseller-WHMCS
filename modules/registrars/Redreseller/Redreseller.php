@@ -1,6 +1,6 @@
 <?php
 
-    function Redreseller_getConfigArray() {
+    function redreseller_getConfigArray() {
         $configarray = array(
             'Webservice_id' => array(
                 'Type' => 'text', 'Size' => '36', 'Description' => 'Enter webservice id here'
@@ -16,7 +16,7 @@
         return $configarray;
     }
 
-    function Redreseller_RegisterDomain($params) {
+    function redreseller_RegisterDomain($params) {
         $domain = $params['sld'] . '.' . $params['tld'];
         $handle = $params['additionalfields']['NIC Handle'];
         $duration = (int)$params['regperiod'] * 12;
@@ -50,7 +50,7 @@
         return $values;
     }
 
-    function Redreseller_RenewDomain($params) {
+    function redreseller_RenewDomain($params) {
         $domain = $params['sld'] . '.' . $params['tld'];
         $duration = (int)$params['regperiod'] * 12;
         $testmode = $params['TestMode'];
@@ -87,7 +87,7 @@
         return $values;
     }
 
-    function Redreseller_Sync($params) {
+    function redreseller_Sync($params) {
         $domain = $params['sld'] . '.' . $params['tld'];
         
         $client = new SoapClient('http://www.redreseller.com/WebService/wsdl');
