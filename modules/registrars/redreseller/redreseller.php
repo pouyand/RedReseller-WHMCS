@@ -86,6 +86,25 @@
 
         return $values;
     }
+    
+    function redreseller_GetNameservers($params) {
+        $domain = $params['sld'] . '.' . $params['tld'];
+        
+        $client = new SoapClient('http://www.redreseller.com/WebService/wsdl');
+        $res = $client->DomainInfo(
+            array('webservice_id' => $params['Webservice_id'], 'webservice_pass' => $params['Webservice_pass']),
+            $domain
+        );
+        $values = array();
+        if (!is_numeric($res)) {
+            for ($i = 0; $i < count($res['domain']['dns']); $i++) {
+                $values['ns' . ($i+1)] = $res['domain']['dns'][$i];
+            }
+        } else {
+            $values['error'] = 'error number = ' . $res;
+        }
+        return $values;
+    }
 
     function redreseller_Sync($params) {
         $domain = $params['sld'] . '.' . $params['tld'];
