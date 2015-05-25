@@ -20,8 +20,6 @@
         $domain = $params['sld'] . '.' . $params['tld'];
         $handle = $params['additionalfields']['NIC Handle'];
         $duration = (int)$params['regperiod'] * 12;
-        $ns1 = $params['ns1'];
-        $ns2 = $params['ns2'];
         $testmode = $params['TestMode'];
 
         $client = new SoapClient('http://www.redreseller.com/WebService/wsdl');
@@ -31,8 +29,10 @@
             $handle,
             $duration,
             array(
-                'ns1' => $ns1,
-                'ns2' => $ns2
+                'ns1' => $params['ns1'],
+                'ns2' => $params['ns2'],
+                'ns3' => $params['ns3'],
+                'ns4' => $params['ns4']
             )
         );	
 
@@ -68,7 +68,9 @@
             $duration,
             array(
                 'ns1' => '',
-                'ns2' => ''
+                'ns2' => '',
+                'ns3' => '',
+                'ns4' => ''
             )
         );
 
