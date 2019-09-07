@@ -102,6 +102,7 @@
             ['webservice_id' => $params['Webservice_id'], 'webservice_pass' => $params['Webservice_pass']],
             $domain
         );
+        $res=json_decode($res,true);
         $values = [];
         if (!is_numeric($res)) {
             for ($i = 0; $i < count($res['domain']['dns']); $i++) {
